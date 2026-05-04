@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<meta name="theme-color" content="#060104"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<title>Happy Anniversary 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:#060104;font-family:'Cormorant Garamond',serif;overflow-x:hidden;color:#fff}
+#root{max-width:430px;margin:0 auto;position:relative;min-height:100svh}
+
+/* ── Keyframes ── */
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:0}8%{opacity:.85}88%{opacity:.4}100%{transform:translateY(-118vh) rotate(400deg) scale(.7);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(.5)}50%{opacity:1;transform:scale(1.4)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.35)}28%{transform:scale(1.04)}42%{transform:scale(1.22)}56%{transform:scale(1)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes floatY2{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+@keyframes glowRing{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.28)}50%{box-shadow:0 0 55px rgba(201,168,76,.72),0 0 90px rgba(200,60,100,.3)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes dropPetal{0%{transform:translateY(-10px) rotate(0deg) scale(1);opacity:0}6%{opacity:.9}90%{opacity:.4}100%{transform:translateY(120vh) rotate(450deg) scale(.65);opacity:0}}
+@keyframes rotateRing{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes glowText{0%,100%{text-shadow:0 0 22px rgba(201,168,76,.38)}50%{text-shadow:0 0 50px rgba(201,168,76,.88),0 0 85px rgba(232,120,160,.3)}}
+@keyframes springUp{0%{opacity:0;transform:translateY(55px) scale(.93)}70%{transform:translateY(-6px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes counterNum{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes splashFade{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.03)}}
+@keyframes appReveal{from{opacity:0}to{opacity:1}}
+@keyframes creditsScroll{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px) translateX(-50%)}to{opacity:1;transform:translateY(0) translateX(-50%)}}
+@keyframes toastOut{from{opacity:1;transform:translateY(0) translateX(-50%)}to{opacity:0;transform:translateY(20px) translateX(-50%)}}
+@keyframes panelUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:0}}
+@keyframes shimmerLine{0%{opacity:0;transform:scaleX(0)}100%{opacity:1;transform:scaleX(1)}}
+
+/* ── Reveal System ── */
+.rv{opacity:0;transform:translateY(38px);transition:opacity .85s cubic-bezier(.23,1,.32,1),transform .85s cubic-bezier(.23,1,.32,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-44px);transition:opacity .82s cubic-bezier(.23,1,.32,1),transform .82s cubic-bezier(.23,1,.32,1)}
+.rv-l.vis{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(44px);transition:opacity .82s cubic-bezier(.23,1,.32,1),transform .82s cubic-bezier(.23,1,.32,1)}
+.rv-r.vis{opacity:1;transform:translateX(0)}
+.rv-z{opacity:0;transform:scale(.76);transition:opacity .78s cubic-bezier(.23,1,.32,1),transform .78s cubic-bezier(.23,1,.32,1)}
+.rv-z.vis{opacity:1;transform:scale(1)}
+
+.photo-slot{transition:transform .42s cubic-bezier(.175,.885,.32,1.275),box-shadow .42s ease}
+.btn-gold{background:linear-gradient(135deg,rgba(145,22,62,.93),rgba(95,10,40,.96));border:1px solid rgba(201,168,76,.42);border-radius:100px;padding:11px 30px;color:rgba(255,240,210,.92);cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;letter-spacing:.5px;transition:all .3s ease}
+.btn-gold:hover{box-shadow:0 0 28px rgba(201,168,76,.4);border-color:rgba(201,168,76,.65)}
+.input-gold{width:100%;padding:13px 20px;border-radius:10px;border:1px solid rgba(201,168,76,.35);background:rgba(15,4,10,.9);color:rgba(255,240,215,.92);font-family:'Cormorant Garamond',serif;font-size:18px;outline:none;text-align:center;letter-spacing:.5px;transition:border-color .3s,box-shadow .3s}
+.input-gold:focus{border-color:rgba(201,168,76,.65);box-shadow:0 0 24px rgba(201,168,76,.15)}
+.input-gold::placeholder{color:rgba(255,200,180,.3);font-style:italic}
+section{position:relative;overflow:hidden}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<canvas id="confetti-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:999;width:100%;height:100%"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect,useRef,useCallback,useMemo,createContext,useContext}=React;
+
+/* ══════════════════════════════════════════════════════
+   CONTEXT
+══════════════════════════════════════════════════════ */
+const AppCtx=createContext({});
+
+/* ══════════════════════════════════════════════════════
+   CONFETTI ENGINE
+══════════════════════════════════════════════════════ */
+function launchConfetti(duration=4200){
+  const canvas=document.getElementById('confetti-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;
+  const W=canvas.width,H=canvas.height;
+  const colors=['#e8758a','#c9a84c','#f0d080','#f5b0c5','#ffffff','#ff9eb5','#ffd700','#e87888'];
+  const shapes=['rect','circle','heart'];
+  const pieces=Array.from({length:160},()=>({
+    x:Math.random()*W,y:-20-Math.random()*140,
+    vx:(Math.random()-0.5)*4.5,vy:2.5+Math.random()*4,
+    r:4+Math.random()*8,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    shape:shapes[Math.floor(Math.random()*shapes.length)],
+    rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.18,
+    alpha:1,decay:.004+Math.random()*.006
+  }));
+  const start=performance.now();
+  function draw(now){
+    ctx.clearRect(0,0,W,H);
+    const elapsed=now-start;
+    pieces.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.rot+=p.rv;
+      if(elapsed>duration*.6)p.alpha=Math.max(0,p.alpha-p.decay);
+      ctx.save();ctx.globalAlpha=p.alpha;ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillStyle=p.color;
+      if(p.shape==='rect'){ctx.fillRect(-p.r/2,-p.r*.4,p.r,p.r*.8)}
+      else if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.r/2,0,Math.PI*2);ctx.fill()}
+      else{// heart
+        const s=p.r*.045;ctx.beginPath();ctx.moveTo(0,-s*2);
+        ctx.bezierCurveTo(s*3,-s*5,s*7,s,0,s*5);
+        ctx.bezierCurveTo(-s*7,s,-s*3,-s*5,0,-s*2);ctx.fill();
+      }
+      ctx.restore();
+    });
+    if(elapsed<duration+1000)requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,W,H);
+  }
+  requestAnimationFrame(draw);
+}
+
+/* ══════════════════════════════════════════════════════
+   MUSIC ENGINE
+══════════════════════════════════════════════════════ */
+function playNote(ctx,dst,freq,when,dur,vol=.22){
+  const o1=ctx.createOscillator(),o2=ctx.createOscillator(),g=ctx.createGain();
+  o1.type='sine';o2.type='triangle';
+  o1.frequency.value=freq;o2.frequency.value=freq*2.004;
+  g.gain.setValueAtTime(.001,when);
+  g.gain.linearRampToValueAtTime(vol,when+.06);
+  g.gain.exponentialRampToValueAtTime(vol*.58,when+.3);
+  g.gain.setValueAtTime(vol*.58,Math.max(when+.3,when+dur-.3));
+  g.gain.exponentialRampToValueAtTime(.001,when+dur);
+  [o1,o2].forEach(o=>{o.connect(g);o.start(when);o.stop(when+dur)});
+  g.connect(dst);
+}
+const CHORDS=[[261.63,329.63,392],[293.66,369.99,440],[246.94,311.13,369.99],[220,277.18,329.63]];
+const SEQ=[
+  [293.66,.5,.22],[329.63,.5,.22],[392,.5,.26],[440,.7,.28],[493.88,.5,.26],[440,.5,.24],[392,.5,.22],[329.63,.7,.28],
+  [261.63,.5,.2],[293.66,.5,.2],[329.63,.5,.24],[369.99,.95,.3],[440,.5,.28],[493.88,.5,.28],[523.25,.5,.3],[493.88,.95,.32],
+  [440,.5,.26],[369.99,.5,.22],[329.63,.5,.24],[293.66,.7,.28],[261.63,.5,.2],[246.94,.5,.18],[261.63,.5,.2],[293.66,.95,.3],
+  [329.63,.5,.22],[369.99,.5,.24],[440,.5,.28],[493.88,.7,.3],[523.25,.5,.32],[493.88,.5,.28],[440,.5,.26],[392,.7,.28],
+];
+
+/* ══════════════════════════════════════════════════════
+   SHARED VISUAL COMPONENTS
+══════════════════════════════════════════════════════ */
+function Stars({n=40}){
+  const s=useMemo(()=>Array.from({length:n},(_,i)=>({
+    l:(i*2.14+3)%100,t:(i*1.97+5)%100,sz:1+(i%3),d:(i*.19)%3,sp:1.4+(i%3)*.5,g:i%4===0
+  })),[n]);
+  return <div style={{position:'absolute',inset:0,pointerEvents:'none',overflow:'hidden'}}>
+    {s.map((st,i)=><div key={i} style={{position:'absolute',left:`${st.l}%`,top:`${st.t}%`,
+      width:st.sz,height:st.sz,borderRadius:'50%',
+      background:st.g?'#f0d090':'rgba(255,232,205,.65)',
+      animation:`twinkle ${st.sp}s ${st.d}s infinite ease-in-out`}}/>)}
+  </div>;
+}
+
+function Particles(){
+  const chars=['❤','✦','✧','·','♥','˙','✿'];
+  return <div style={{position:'fixed',inset:0,pointerEvents:'none',zIndex:4,overflow:'hidden'}}>
+    {Array.from({length:20},(_,i)=><span key={i} style={{
+      position:'absolute',bottom:'-18px',left:`${(i*4.8+1)%96}%`,
+      fontSize:`${11+(i*3)%17}px`,
+      color:['#e8758a','#c9a84c','#f5d0e0'][i%3],
+      animation:`floatUp ${5+(i*.65)%6}s ${(i*.42)%7.5}s infinite ease-in-out`
+    }}>{chars[i%7]}</span>)}
+  </div>;
+}
+
+function Petals({n=14}){
+  const items=useMemo(()=>Array.from({length:n},(_,i)=>({
+    left:`${(i*6.8+2)%97}%`,
+    color:['#e8758a','#c9a84c','#f0d080','#f5b0c5'][i%4],
+    size:`${4+(i%4)}px`,delay:`${(i*.35)%4.5}s`,dur:`${4+(i%3)*.7}s`
+  })),[n]);
+  return <div style={{position:'fixed',inset:0,pointerEvents:'none',zIndex:3,overflow:'hidden'}}>
+    {items.map((p,i)=><div key={i} style={{position:'absolute',left:p.left,top:'-12px',
+      width:p.size,height:p.size,borderRadius:'50%',background:p.color,
+      animation:`dropPetal ${p.dur} ${p.delay} infinite linear`,opacity:.75}}/>)}
+  </div>;
+}
+
+function SectionHead({script,sub,delay='0s'}){
+  return <>
+    <div className="rv" style={{fontFamily:'"Great Vibes",cursive',fontSize:52,
+      color:'rgba(201,168,76,.9)',marginBottom:5,textAlign:'center',
+      position:'relative',zIndex:2,transitionDelay:delay}}>{script}</div>
+    <div className="rv" style={{fontFamily:'"Cormorant Garamond",serif',fontSize:11,
+      letterSpacing:5,textTransform:'uppercase',color:'rgba(232,160,180,.5)',
+      marginBottom:42,position:'relative',zIndex:2}}>{sub}</div>
+  </>;
+}
+
+function Divider(){
+  return <div style={{width:1,height:70,margin:'0 auto',
+    background:'linear-gradient(to bottom,transparent,rgba(201,168,76,.38),transparent)'}}/>
+}
+
+/* ══════════════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════════════ */
+function Toast({msg,visible}){
+  return <div style={{
+    position:'fixed',bottom:32,left:'50%',
+    background:'linear-gradient(135deg,rgba(140,20,58,.96),rgba(90,8,38,.98))',
+    border:'1px solid rgba(201,168,76,.4)',borderRadius:100,
+    padding:'10px 24px',zIndex:200,pointerEvents:'none',
+    fontFamily:'"Cormorant Garamond",serif',fontSize:15,fontStyle:'italic',
+    color:'rgba(255,240,210,.92)',whiteSpace:'nowrap',
+    animation:visible?'toastIn .4s ease forwards':'toastOut .4s ease forwards',
+    boxShadow:'0 8px 32px rgba(0,0,0,.55)'
+  }}>{msg}</div>;
+}
+
+/* ══════════════════════════════════════════════════════
+   SPLASH / ONBOARDING
+══════════════════════════════════════════════════════ */
+function Splash({onDone}){
+  const [name,setName]=useState('');
+  const [date,setDate]=useState('');
+  const [step,setStep]=useState(0); // 0=name,1=date,2=animating
+  const [err,setErr]=useState('');
+
+  const submitName=()=>{
+    if(!name.trim()){setErr('Please enter her name 💕');return}
+    setErr('');setStep(1);
+  };
+  const submitDate=()=>{
+    const d=date?new Date(date):new Date(new Date().setFullYear(new Date().getFullYear()-1));
+    setStep(2);
+    setTimeout(()=>{launchConfetti(4500);onDone(name.trim(),d)},800);
+  };
+
+  return <div style={{
+    position:'fixed',inset:0,zIndex:300,
+    background:`radial-gradient(ellipse at 20% 40%,rgba(170,25,75,.72) 0%,transparent 52%),radial-gradient(ellipse at 80% 25%,rgba(110,15,62,.6) 0%,transparent 52%),linear-gradient(155deg,#050103,#1c0412,#0e0210)`,
+    display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',
+    padding:'28px 28px',textAlign:'center',
+    animation:step===2?'splashFade .8s ease forwards':'none',
+    overflow:'hidden'
+  }}>
+    <Stars n={70}/>
+    <Particles/>
+
+    {/* Animated heart */}
+    <div style={{fontSize:58,marginBottom:28,animation:'heartbeat 2.5s ease-in-out infinite',
+      filter:'drop-shadow(0 0 18px rgba(201,168,76,.45))'}}>❤️</div>
+
+    <div style={{fontFamily:'"Great Vibes",cursive',fontSize:50,lineHeight:1.1,
+      color:'rgba(255,255,255,.96)',textShadow:'0 0 38px rgba(201,168,76,.5)',
+      marginBottom:8}}>Happy Anniversary</div>
+    <div style={{fontFamily:'"Cormorant Garamond",serif',fontSize:11,letterSpacing:5,
+      textTransform:'uppercase',color:'rgba(232,160,180,.55)',marginBottom:44}}>
+      let's personalise your gift</div>
+
+    {step===0&&<div style={{width:'100%',maxWidth:300,display:'flex',flexDirection:'column',gap:14}}>
+      <div style={{fontFamily:'"Playfair Display",serif',fontStyle:'italic',fontSize:18,
+        color:'rgba(255,235,210,.75)',marginBottom:4}}>What's her name?</div>
+      <input className="input-gold" placeholder="Her beautiful name…"
+        value={name} onChange={e=>setName(e.target.value)}
+        onKeyDown={e=>e.key==='Enter'&&submitName()}
+        autoFocus style={{fontSize:20}}/>
+      {err&&<div style={{color:'rgba(232,120,130,.8)',fontSize:13,fontStyle:'italic'}}>{err}</div>}
+      <button className="btn-gold" onClick={submitName} style={{marginTop:4,fontSize:17}}>
+        Next ✦
+      </button>
+    </div>}
+
+    {step===1&&<div style={{width:'100%',maxWidth:300,display:'flex',flexDirection:'column',gap:14,
+      animation:'springUp .7s cubic-bezier(.23,1,.32,1) both'}}>
+      <div style={{fontFamily:'"Playfair Display",serif',fontStyle:'italic',fontSize:18,
+        color:'rgba(255,235,210,.75)',marginBottom:4}}>When did your story begin?</div>
+      <input type="date" className="input-gold" value={date} onChange={e=>setDate(e.target.value)}
+        style={{colorScheme:'dark',fontSize:16}}/>
+      <div style={{fontSize:13,fontStyle:'italic',color:'rgba(232,160,180,.45)'}}>
+        Leave empty to use today's date one year ago
+      </div>
+      <button className="btn-gold" onClick={submitDate} style={{marginTop:4,fontSize:17}}>
+        Begin Our Story 💕
+      </button>
+      <button onClick={()=>setStep(0)} style={{background:'none',border:'none',cursor:'pointer',
+        color:'rgba(201,168,76,.45)',fontSize:13,fontFamily:'"Cormorant Garamond",serif',
+        fontStyle:'italic'}}>← back</button>
+    </div>}
+
+    {step===2&&<div style={{fontFamily:'"Great Vibes",cursive',fontSize:36,
+      color:'rgba(201,168,76,.85)',animation:'springUp .6s ease both'}}>
+      Loading your love story…
+    </div>}
+  </div>;
+}
+
+/* ══════════════════════════════════════════════════════
+   LOVE COUNTER
+══════════════════════════════════════════════════════ */
+function LoveCounter({startDate}){
+  const [,tick]=useState(0);
+  useEffect(()=>{const t=setInterval(()=>tick(v=>v+1),1000);return()=>clearInterval(t)},[]);
+  const diff=Date.now()-startDate.getTime();
+  const units=[
+    {v:Math.floor(diff/86400000),u:'Days'},
+    {v:Math.floor((diff%86400000)/3600000),u:'Hours'},
+    {v:Math.floor((diff%3600000)/60000),u:'Mins'},
+    {v:Math.floor((diff%60000)/1000),u:'Secs'}
+  ];
+  return <div className="rv" style={{maxWidth:340,width:'100%',margin:'0 auto',
+    background:'linear-gradient(135deg,rgba(40,5,20,.9),rgba(22,3,12,.95))',
+    border:'1px solid rgba(201,168,76,.35)',borderRadius:14,padding:'24px 16px',
+    position:'relative',zIndex:2,boxShadow:'0 22px 65px rgba(0,0,0,.55),inset 0 1px 0 rgba(201,168,76,.1)'}}>
+    <div style={{position:'absolute',inset:0,borderRadius:14,pointerEvents:'none',overflow:'hidden',
+      background:'radial-gradient(ellipse at 50% -5%,rgba(201,168,76,.05) 0%,transparent 55%)'}}/>
+    <div style={{fontFamily:'"Great Vibes",cursive',fontSize:26,color:'rgba(201,168,76,.78)',
+      textAlign:'center',marginBottom:18}}>Together For</div>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:8}}>
+      {units.map(({v,u},i)=><div key={i} style={{textAlign:'center'}}>
+        <div style={{background:'rgba(201,168,76,.07)',border:'1px solid rgba(201,168,76,.2)',
+          borderRadius:8,padding:'10px 4px',marginBottom:5}}>
+          <div key={v} style={{fontFamily:'"Playfair Display",serif',fontWeight:700,
+            fontSize:22,color:'rgba(201,168,76,.9)',lineHeight:1,
+            animation:'counterNum .25s ease both'}}>
+            {String(v).padStart(2,'0')}
+          </div>
+        </div>
+        <div style={{fontSize:9,letterSpacing:2,textTransform:'uppercase',
+          color:'rgba(232,160,180,.5)'}}>{u}</div>
+      </div>)}
+    </div>
+  </div>;
+}
+
+/* ══════════════════════════════════════════════════════
+   QUOTE RIBBON
+══════════════════════════════════════════════════════ */
+const QUOTES=[
+  '"You are my sun, my moon, and all my stars."',
+  '"In you, I found the love I always dreamed of."',
+  '"Every love story is beautiful — ours is my favourite."',
+  '"Together is my favourite place to be."  ✦',
+  '"You are the best thing that ever happened to me."',
+  '"My soul recognises your soul."  ·  ',
+];
+function QuoteRibbon(){
+  const txt=QUOTES.join('   ·   ');
+  return <div style={{width:'100%',overflow:'hidden',
+    background:'linear-gradient(90deg,rgba(125,18,50,.84),rgba(88,10,40,.9),rgba(125,18,50,.84))',
+    borderTop:'1px solid rgba(201,168,76,.2)',borderBottom:'1px solid rgba(201,168,76,.2)',
+    padding:'13px 0',position:'relative',zIndex:5}}>
+    <div style={{display:'flex',width:'max-content',animation:'ticker 40s linear infinite'}}>
+      {[txt,txt].map((t,i)=><div key={i} style={{fontFamily:'"Cormorant Garamond",serif',
+        fontStyle:'italic',fontSize:14,color:'rgba(255,235,215,.8)',
+        whiteSpace:'nowrap',padding:'0 32px',letterSpacing:.5}}>{t}</div>)}
+    </div>
+  </div>;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════ */
+function Hero({sy,name,startDate}){
+  return <section style={{minHeight:'100svh',
+    background:`radial-gradient(ellipse at 18% 38%,rgba(172,25,78,.72) 0%,transparent 52%),radial-gradient(ellipse at 82% 22%,rgba(112,16,62,.62) 0%,transparent 52%),radial-gradient(ellipse at 50% 88%,rgba(76,8,38,.74) 0%,transparent 52%),linear-gradient(155deg,#050103 0%,#1c0412 48%,#0e0210 100%)`,
+    display:'flex',flexDirection:'column',alignItems:'center',
+    justifyContent:'center',textAlign:'center',padding:'28px 20px 90px'}}>
+    <Stars n={75}/>
+    <div style={{position:'absolute',inset:'-25%',pointerEvents:'none',
+      background:'radial-gradient(ellipse at 50% 42%,rgba(190,32,80,.13) 0%,transparent 62%)',
+      transform:`translateY(${sy*.28}px)`,transition:'transform .05s'}}/>
+    {/* Deco ring */}
+    <div style={{position:'relative',marginBottom:30,zIndex:2}}>
+      <div style={{width:190,height:190,borderRadius:'50%',
+        display:'flex',alignItems:'center',justifyContent:'center',position:'relative'}}>
+        <div style={{position:'absolute',inset:0,borderRadius:'50%',
+          border:'1px dashed rgba(201,168,76,.2)',animation:'rotateRing 22s linear infinite'}}/>
+        <div style={{position:'absolute',inset:8,borderRadius:'50%',
+          border:'1px solid rgba(201,168,76,.38)',animation:'glowRing 3.5s ease-in-out infinite'}}>
+          {Array.from({length:12},(_,i)=><div key={i} style={{
+            position:'absolute',width:5,height:5,borderRadius:'50%',
+            background:`rgba(201,168,76,${.28+(i%3)*.2})`,
+            top:'50%',left:'50%',
+            transform:`rotate(${i*30}deg) translateY(-84px) translate(-50%,-50%)`}}/>)}
+        </div>
+        <div style={{width:148,height:148,borderRadius:'50%',
+          background:'radial-gradient(circle at 38% 38%,rgba(155,25,65,.55),rgba(58,5,28,.92))',
+          display:'flex',alignItems:'center',justifyContent:'center',
+          fontSize:68,animation:'heartbeat 2.6s ease-in-out infinite',
+          boxShadow:'0 0 40px rgba(201,168,76,.2),inset 0 -4px 22px rgba(0,0,0,.55)'}}>❤️</div>
+      </div>
+    </div>
+    <div style={{fontFamily:'"Great Vibes",cursive',fontSize:56,lineHeight:1.05,
+      color:'rgba(255,255,255,.97)',textShadow:'0 0 42px rgba(201,168,76,.5)',
+      marginBottom:8,zIndex:2,position:'relative',
+      animation:'springUp .9s cubic-bezier(.23,1,.32,1) .1s both'}}>Happy Anniversary</div>
+    <div style={{fontFamily:'"Great Vibes",cursive',fontSize:42,
+      color:'rgba(201,168,76,.92)',marginBottom:18,zIndex:2,position:'relative',
+      animation:'glowText 3.5s ease-in-out infinite, springUp .9s cubic-bezier(.23,1,.32,1) .35s both'}}>
+      {name} 💕</div>
+    <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:16,zIndex:2,position:'relative',
+      animation:'springUp .9s cubic-bezier(.23,1,.32,1) .55s both'}}>
+      <div style={{width:60,height:1,background:'linear-gradient(to right,transparent,rgba(201,168,76,.5))'}}/>
+      <span style={{color:'rgba(201,168,76,.68)',fontSize:16}}>✦</span>
+      <div style={{width:60,height:1,background:'linear-gradient(to left,transparent,rgba(201,168,76,.5))'}}/>
+    </div>
+    <div style={{fontSize:11,letterSpacing:5,textTransform:'uppercase',
+      color:'rgba(232,160,180,.6)',marginBottom:14,zIndex:2,position:'relative',
+      animation:'springUp .9s cubic-bezier(.23,1,.32,1) .7s both'}}>One Year of Us</div>
+    <div style={{background:'rgba(201,168,76,.07)',border:'1px solid rgba(201,168,76,.26)',
+      borderRadius:100,padding:'9px 26px',fontFamily:'"Cormorant Garamond",serif',
+      fontStyle:'italic',fontSize:18,color:'rgba(255,240,210,.82)',
+      marginBottom:44,zIndex:2,position:'relative',
+      animation:'springUp .9s cubic-bezier(.23,1,.32,1) .85s both'}}>Forever & always ∞</div>
+    <div style={{width:'100%',maxWidth:340,marginBottom:44,zIndex:2,position:'relative',
+      animation:'springUp .9s cubic-bezier(.23,1,.32,1) 1s both'}}>
+      <LoveCounter startDate={startDate}/>
+    </div>
+    <div style={{animation:'floatY 2.2s ease-in-out infinite',color:'rgba(201,168,76,.42)',
+      fontSize:11,letterSpacing:3,textTransform:'uppercase',zIndex:2,position:'relative'}}>scroll ↓</div>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   PHOTO GALLERY
+══════════════════════════════════════════════════════ */
+const DEFAULT_SEEDS=[
+  'WhatsApp Image 2026-05-03 at 15.12.07.jpeg',
+  'WhatsApp Image 2026-05-03 at 15.05.11.jpeg',
+  '462a649a-85ef-4021-950b-d9361e45bea6.jpg',
+  'c9524205-63f3-4dad-818b-d2023ed8ccfe.jpg',
+  'WhatsApp Image 2026-05-03 at 15.10.39.jpeg',
+  'WhatsApp Image 2026-05-03 at 15.12.58.jpeg',
+];
+const LABELS=['First Kiss','Our Smile','Wander Love','Together','Memories','Always'];
+const ROTS=['-4deg','3deg','-2.5deg','4deg','-3deg','2deg'];
+
+function PhotoGallery(){
+  const [photos,setPhotos]=useState(DEFAULT_SEEDS.map((s,i)=>({type:'url',val:s,label:LABELS[i]})));
+  const [hover,setHover]=useState(null);
+  const handleFile=(i,e)=>{
+    const file=e.target.files[0];if(!file)return;
+    const url=URL.createObjectURL(file);
+    setPhotos(prev=>{const n=[...prev];n[i]={...prev[i],type:'url',val:url};return n});
+  };
+  const src=p=>p.val;
+  return <section style={{minHeight:'100svh',
+    background:'linear-gradient(180deg,#060104 0%,#1a0412 50%,#060104 100%)',
+    padding:'88px 20px 108px',display:'flex',flexDirection:'column',alignItems:'center'}}>
+    <Stars n={38}/>
+    <SectionHead script="Our Memories" sub="captured moments of us"/>
+    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,
+      width:'100%',maxWidth:360,position:'relative',zIndex:2}}>
+      {photos.map((p,i)=><div key={i} className="rv" style={{transitionDelay:`${i*.1}s`}}>
+        <label style={{cursor:'pointer',display:'block'}}>
+          <input type="file" accept="image/*" style={{display:'none'}} onChange={e=>handleFile(i,e)}/>
+          <div className="photo-slot" style={{
+            background:'linear-gradient(145deg,#fdf8f0,#fef5ea)',
+            padding:'8px 8px 28px',borderRadius:3,
+            transform:hover===i?'rotate(0deg) scale(1.07)':`rotate(${ROTS[i]})`,
+            boxShadow:'0 8px 28px rgba(0,0,0,.62),0 2px 8px rgba(0,0,0,.42)'}}
+            onMouseEnter={()=>setHover(i)} onMouseLeave={()=>setHover(null)}
+            onTouchStart={()=>setHover(i)} onTouchEnd={()=>setHover(null)}>
+            <div style={{width:'100%',paddingBottom:'100%',position:'relative',overflow:'hidden'}}>
+              <img src={src(p)} alt={p.label} loading="lazy" style={{
+                position:'absolute',inset:0,width:'100%',height:'100%',
+                objectFit:'cover',filter:'sepia(10%) saturate(112%) brightness(95%)'}}/>
+              <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',
+                justifyContent:'center',transition:'background .3s',
+                background:hover===i?'rgba(0,0,0,.3)':'transparent'}}>
+                {hover===i&&<div style={{fontFamily:'"Cormorant Garamond",serif',fontStyle:'italic',
+                  fontSize:13,color:'rgba(255,255,255,.9)',textAlign:'center',padding:8}}>
+                  Replace ✦</div>}
+              </div>
+            </div>
+            <div style={{textAlign:'center',marginTop:7,fontFamily:'"Great Vibes",cursive',
+              fontSize:15,color:'#7b2244'}}>{p.label}</div>
+          </div>
+        </label>
+      </div>)}
+    </div>
+    <div style={{marginTop:60}}><Divider/></div>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   VIDEO FRAME
+══════════════════════════════════════════════════════ */
+function VideoFrame(){
+  const [url,setUrl]=useState('');
+  const [embed,setEmbed]=useState('WhatsApp Video 2026-05-03 at 15.07.41.mp4');
+  const [editing,setEditing]=useState(false);
+  const toEmbed=v=>{
+    const m=v.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+    if(m)return`https://www.youtube.com/embed/${m[1]}?autoplay=0&rel=0`;
+    if(v.match(/\.(mp4|webm|ogg)$/i))return v;
+    return'';
+  };
+  return <section style={{minHeight:'62svh',
+    background:'linear-gradient(180deg,#060104,#120310 55%,#060104)',
+    display:'flex',flexDirection:'column',alignItems:'center',
+    justifyContent:'center',padding:'88px 24px'}}>
+    <Stars n={24}/>
+    <SectionHead script="Our Story" sub="a movie of us"/>
+    {(!embed||editing)&&<div className="rv" style={{width:'100%',maxWidth:340,
+      marginBottom:20,position:'relative',zIndex:2,
+      display:'flex',flexDirection:'column',gap:10,alignItems:'center'}}>
+      <input type="text" placeholder="Paste a YouTube or video link…"
+        value={url} onChange={e=>setUrl(e.target.value)}
+        className="input-gold" style={{fontSize:15}}/>
+      <button className="btn-gold" onClick={()=>{setEmbed(toEmbed(url));setEditing(false)}}>
+        Add Video ✦
+      </button>
+    </div>}
+    <div className="rv-z" style={{width:'100%',maxWidth:340,
+      border:'1.5px solid rgba(201,168,76,.42)',borderRadius:6,overflow:'hidden',
+      animation:'glowRing 3.5s ease-in-out infinite',
+      boxShadow:'0 25px 72px rgba(0,0,0,.65)',position:'relative',zIndex:2}}>
+      <div style={{background:'#050104',padding:'9px 0',textAlign:'center',
+        fontSize:11,letterSpacing:4,textTransform:'uppercase',
+        color:'rgba(201,168,76,.55)',fontFamily:'"Cormorant Garamond",serif'}}>
+        ♦ Our Love Story ♦</div>
+      <div style={{width:'100%',paddingBottom:'56.25%',position:'relative',
+        background:'radial-gradient(ellipse at center,rgba(130,38,72,.22),#050104 75%)'}}>
+        {embed
+          ?<video src={embed} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} controls playsInline/>
+          :<div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',
+              alignItems:'center',justifyContent:'center',gap:10}}>
+            {Array.from({length:22},(_,i)=><div key={i} style={{position:'absolute',
+              left:`${(i*4.6)%100}%`,top:`${(i*4.3+8)%100}%`,
+              width:2,height:2,borderRadius:'50%',background:'rgba(255,235,190,.22)',
+              animation:`twinkle ${1+(i%3)*.4}s ${(i*.16)%2}s infinite`}}/>)}
+            <div style={{fontSize:44,animation:'heartbeat 2s ease-in-out infinite',position:'relative'}}>🎬</div>
+            <div style={{fontFamily:'"Great Vibes",cursive',fontSize:19,
+              color:'rgba(201,168,76,.8)',textAlign:'center',padding:'0 24px',position:'relative'}}>
+              Add your favourite memory</div>
+            <div style={{fontSize:11,letterSpacing:2,textTransform:'uppercase',
+              color:'rgba(232,160,180,.35)',position:'relative'}}>paste a link above</div>
+          </div>}
+      </div>
+      <div style={{background:'#050104',padding:'10px 0',textAlign:'center',
+        display:'flex',alignItems:'center',justifyContent:'center',gap:12}}>
+        <span style={{fontSize:10,letterSpacing:2,color:'rgba(201,168,76,.3)',
+          fontFamily:'"Cormorant Garamond",serif'}}>Our Video</span>
+        {embed&&<button onClick={()=>setEditing(true)} style={{background:'none',border:'none',
+          cursor:'pointer',color:'rgba(201,168,76,.48)',fontSize:11,
+          fontFamily:'"Cormorant Garamond",serif',textDecoration:'underline'}}>change</button>}
+      </div>
+    </div>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   LOVE LETTER
+══════════════════════════════════════════════════════ */
+function LoveLetter({name}){
+  const LETTER=`My dearest ${name},\n\nOne year ago, you walked into my life and turned it into the most beautiful story I've ever known.\n\nEvery morning with you feels like the first page of a new chapter. Every laugh we share, every adventure we take, every quiet moment we hold — they are all woven into the fabric of who I am now.\n\nYou are my sunshine on cloudy days, my calm in every storm, my favourite place to be. You make ordinary moments feel extraordinary just by being you.\n\nHappy First Anniversary, my love. Here's to a lifetime of us — of growing together, loving fiercely, and writing the most beautiful story the universe has ever seen.\n\nForever yours,\nAman with all his heart ❤️`;
+  const [shown,setShown]=useState('');
+  const [started,setStarted]=useState(false);
+  const ref=useRef(null);const tRef=useRef(null);
+  useEffect(()=>{
+    const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting&&!started)setStarted(true)},{threshold:.18});
+    if(ref.current)obs.observe(ref.current);return()=>obs.disconnect();
+  },[started]);
+  useEffect(()=>{
+    if(!started)return;let i=0;
+    const d=setTimeout(()=>{
+      tRef.current=setInterval(()=>{i++;setShown(LETTER.slice(0,i));if(i>=LETTER.length)clearInterval(tRef.current)},17);
+    },500);
+    return()=>{clearTimeout(d);clearInterval(tRef.current)};
+  },[started,LETTER]);
+  return <section style={{minHeight:'100svh',position:'relative',overflow:'hidden',
+    background:`radial-gradient(ellipse at 50% 5%,rgba(155,22,65,.22) 0%,transparent 52%),linear-gradient(180deg,#060104,#160412)`,
+    padding:'88px 20px 108px',display:'flex',flexDirection:'column',alignItems:'center'}}>
+    <Stars n={32}/>
+    <SectionHead script="A Letter For You" sub="straight from the heart"/>
+    <div ref={ref} className="rv-z" style={{maxWidth:355,width:'100%',
+      background:'linear-gradient(158deg,#fdf9f0,#fef7ea 55%,#fdf5e5)',
+      borderRadius:3,padding:'40px 28px 44px',
+      boxShadow:'0 32px 88px rgba(0,0,0,.72),0 8px 24px rgba(0,0,0,.46),inset 0 1px 0 rgba(255,255,255,.95)',
+      position:'relative',overflow:'hidden',zIndex:2}}>
+      <div style={{position:'absolute',inset:0,pointerEvents:'none',
+        backgroundImage:'repeating-linear-gradient(transparent,transparent 27px,rgba(150,110,130,.09) 27px,rgba(150,110,130,.09) 28px)',
+        backgroundPosition:'0 44px'}}/>
+      <div style={{position:'absolute',left:56,top:0,bottom:0,width:1,background:'rgba(185,95,115,.13)'}}/>
+      <div style={{position:'absolute',top:12,right:12,width:42,height:42,borderRadius:'50%',
+        background:'radial-gradient(circle at 35% 35%,#c23060,#8b1a3c)',
+        display:'flex',alignItems:'center',justifyContent:'center',
+        fontSize:16,boxShadow:'0 4px 14px rgba(0,0,0,.38)',color:'rgba(255,215,215,.92)',
+        animation:'glowRing 3.5s ease-in-out infinite'}}>❤</div>
+      <div style={{position:'absolute',bottom:10,left:12,fontSize:20,opacity:.14,color:'#7b2244'}}>✦</div>
+      <div style={{fontFamily:'"Cormorant Garamond",serif',fontSize:15.5,lineHeight:'28px',
+        color:'#3d1a2a',whiteSpace:'pre-line',position:'relative',zIndex:1,paddingLeft:15}}>
+        {shown}
+        {shown.length<LETTER.length&&<span style={{display:'inline-block',width:2,height:16,
+          background:'#7b2244',marginLeft:1,verticalAlign:'middle',
+          animation:'blink 1s step-end infinite'}}/>}
+      </div>
+    </div>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   TIMELINE (with edit)
+══════════════════════════════════════════════════════ */
+const DEFAULT_MILESTONES=[
+  {icon:'💫',date:'Day One',text:'The day we first met — the universe conspired',c:'#e8a0b4',side:'l'},
+  {icon:'🌹',date:'First Date',text:'You stole my heart over coffee',c:'#c9a84c',side:'r'},
+  {icon:'💑',date:'One Month',text:'Officially, beautifully — us',c:'#e8a0b4',side:'l'},
+  {icon:'✈️',date:'Six Months',text:'Our first adventure under new skies',c:'#c9a84c',side:'r'},
+  {icon:'🎂',date:'Today ✨',text:'Happy 1st Anniversary, my love!',c:'#e87888',side:'l'},
+];
+
+function MilestoneEditor({item,onSave,onClose}){
+  const [d,setD]=useState({...item});
+  return <div style={{position:'fixed',inset:0,zIndex:150,display:'flex',
+    alignItems:'flex-end',justifyContent:'center',
+    background:'rgba(0,0,0,.65)',backdropFilter:'blur(6px)'}}>
+    <div style={{width:'100%',maxWidth:430,
+      background:'linear-gradient(180deg,#1c0412,#0e0208)',
+      borderRadius:'20px 20px 0 0',border:'1px solid rgba(201,168,76,.28)',
+      padding:'28px 24px 40px',animation:'panelUp .4s cubic-bezier(.23,1,.32,1) both'}}>
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:24}}>
+        <div style={{fontFamily:'"Great Vibes",cursive',fontSize:28,color:'rgba(201,168,76,.85)'}}>Edit Milestone</div>
+        <button onClick={onClose} style={{background:'none',border:'none',cursor:'pointer',
+          color:'rgba(255,255,255,.4)',fontSize:22}}>✕</button>
+      </div>
+      {[['Emoji / Icon','icon'],['Date Label','date'],['Description','text']].map(([lbl,k])=><div key={k} style={{marginBottom:16}}>
+        <div style={{fontFamily:'"Cormorant Garamond",serif',fontSize:12,letterSpacing:3,
+          textTransform:'uppercase',color:'rgba(201,168,76,.55)',marginBottom:6}}>{lbl}</div>
+        <input className="input-gold" value={d[k]} onChange={e=>setD(p=>({...p,[k]:e.target.value}))}
+          style={{textAlign:'left',fontSize:16}}/>
+      </div>)}
+      <button className="btn-gold" onClick={()=>onSave(d)} style={{width:'100%',marginTop:8,fontSize:17}}>
+        Save ✦
+      </button>
+    </div>
+  </div>;
+}
+
+function Timeline(){
+  const [items,setItems]=useState(DEFAULT_MILESTONES);
+  const [editing,setEditing]=useState(null);
+  return <section style={{position:'relative',overflow:'hidden',
+    background:'linear-gradient(180deg,#060104,#120310 55%,#060104)',
+    padding:'88px 24px 108px',display:'flex',flexDirection:'column',alignItems:'center'}}>
+    <Stars n={26}/>
+    <SectionHead script="Our Journey" sub="milestones of love"/>
+    <div style={{fontFamily:'"Cormorant Garamond",serif',fontSize:12,fontStyle:'italic',
+      color:'rgba(201,168,76,.38)',marginBottom:42,marginTop:-24}}>tap a card to edit</div>
+    <div style={{width:'100%',maxWidth:330,position:'relative',zIndex:2}}>
+      <div style={{position:'absolute',left:'50%',top:0,bottom:0,width:1,
+        transform:'translateX(-50%)',
+        background:'linear-gradient(to bottom,transparent,rgba(201,168,76,.32) 12%,rgba(201,168,76,.32) 88%,transparent)'}}/>
+      {items.map((it,i)=>{
+        const isL=it.side==='l';
+        return <div key={i} className={`rv-${isL?'l':'r'}`}
+          style={{display:'flex',alignItems:'center',
+            justifyContent:isL?'flex-end':'flex-start',
+            marginBottom:42,transitionDelay:`${i*.13}s`,
+            paddingRight:isL?'calc(50% + 30px)':0,
+            paddingLeft:isL?0:'calc(50% + 30px)',position:'relative'}}>
+          <div style={{position:'absolute',left:'50%',transform:'translateX(-50%)',
+            width:44,height:44,borderRadius:'50%',
+            background:`radial-gradient(circle at 35% 35%,${it.c}45,${it.c}18)`,
+            border:`1px solid ${it.c}55`,
+            display:'flex',alignItems:'center',justifyContent:'center',
+            fontSize:18,boxShadow:`0 0 22px ${it.c}30,0 4px 12px rgba(0,0,0,.42)`,zIndex:1}}>
+            {it.icon}
+          </div>
+          <button onClick={()=>setEditing(i)} style={{cursor:'pointer',background:'none',border:'none',padding:0,width:'100%'}}>
+            <div style={{background:'rgba(255,255,255,.04)',border:`1px solid ${it.c}28`,
+              borderRadius:10,padding:'14px 15px',width:'100%',
+              transition:'background .3s,border-color .3s',textAlign:isL?'right':'left'}}
+              onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,255,255,.07)';e.currentTarget.style.borderColor=`${it.c}48`}}
+              onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,.04)';e.currentTarget.style.borderColor=`${it.c}28`}}>
+              <div style={{fontFamily:'"Cormorant Garamond",serif',fontSize:10,
+                letterSpacing:3,textTransform:'uppercase',color:`${it.c}`,marginBottom:5,opacity:.85}}>
+                {it.date}</div>
+              <div style={{fontFamily:'"Playfair Display",serif',fontSize:14,
+                color:'rgba(255,255,255,.82)',lineHeight:1.5}}>{it.text}</div>
+            </div>
+          </button>
+        </div>;
+      })}
+    </div>
+    {editing!==null&&<MilestoneEditor item={items[editing]}
+      onSave={d=>{setItems(prev=>{const n=[...prev];n[editing]=d;return n});setEditing(null)}}
+      onClose={()=>setEditing(null)}/>}
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   FINALE
+══════════════════════════════════════════════════════ */
+function Finale({name,onConfetti}){
+  const ref=useRef(null);const fired=useRef(false);
+  useEffect(()=>{
+    const obs=new IntersectionObserver(([e])=>{
+      if(e.isIntersecting&&!fired.current){fired.current=true;onConfetti();}
+    },{threshold:.3});
+    if(ref.current)obs.observe(ref.current);return()=>obs.disconnect();
+  },[onConfetti]);
+  return <section ref={ref} style={{minHeight:'100svh',position:'relative',overflow:'hidden',
+    background:`radial-gradient(ellipse at 50% 28%,rgba(172,22,72,.54) 0%,transparent 55%),radial-gradient(ellipse at 18% 72%,rgba(102,12,52,.44) 0%,transparent 45%),radial-gradient(ellipse at 82% 72%,rgba(102,12,52,.44) 0%,transparent 45%),linear-gradient(158deg,#050103,#1c0412,#060104)`,
+    display:'flex',flexDirection:'column',alignItems:'center',
+    justifyContent:'center',padding:'68px 24px',textAlign:'center'}}>
+    <Stars n={85}/>
+    <div className="rv-z" style={{fontSize:88,marginBottom:28,
+      animation:'floatY2 3.2s ease-in-out infinite',position:'relative',zIndex:2}}>💑</div>
+    <div className="rv" style={{fontFamily:'"Great Vibes",cursive',fontSize:62,lineHeight:1.08,
+      color:'rgba(255,255,255,.97)',textShadow:'0 0 65px rgba(201,168,76,.5)',
+      marginBottom:16,position:'relative',zIndex:2,
+      animation:'glowText 4s ease-in-out infinite'}}>Forever & Always</div>
+    <div className="rv" style={{fontFamily:'"Cormorant Garamond",serif',fontStyle:'italic',
+      fontSize:21,color:'rgba(232,160,180,.88)',maxWidth:290,lineHeight:1.8,
+      marginBottom:30,position:'relative',zIndex:2}}>
+      "You are my today and all of my tomorrows."</div>
+    <div className="rv-z" style={{background:'rgba(201,168,76,.08)',
+      border:'1px solid rgba(201,168,76,.38)',borderRadius:100,padding:'13px 32px',
+      fontFamily:'"Great Vibes",cursive',fontSize:28,color:'rgba(201,168,76,.9)',
+      marginBottom:16,position:'relative',zIndex:2,
+      animation:'glowRing 3s ease-in-out infinite'}}>
+      Happy 1st Anniversary, {name} ❤️</div>
+    <div className="rv" style={{display:'flex',gap:20,fontSize:30,marginBottom:40,
+      animation:'floatY 2.2s ease-in-out infinite',position:'relative',zIndex:2}}>
+      ❤️ 💕 ❤️
+    </div>
+    <button className="btn-gold rv" onClick={()=>launchConfetti(5000)}
+      style={{fontSize:16,marginBottom:10,position:'relative',zIndex:2}}>
+      🎊 Celebrate Again!
+    </button>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   CREDITS
+══════════════════════════════════════════════════════ */
+function Credits({name}){
+  const lines=[
+    {t:'section',v:'A Love Story'},
+    {t:'sub',v:'Presented with all my heart'},
+    {t:'divider'},
+    {t:'role',r:'Starring',v:name},
+    {t:'role',r:'Co-starring',v:'You'},
+    {t:'divider'},
+    {t:'role',r:'Directed by',v:'Love & Time'},
+    {t:'role',r:'Produced by',v:'One Beautiful Year'},
+    {t:'role',r:'Written by',v:'Our Hearts'},
+    {t:'role',r:'Music by',v:'The Sound of Us'},
+    {t:'divider'},
+    {t:'role',r:'Photography by',v:'Stolen Moments'},
+    {t:'role',r:'Visual Effects',v:'Stardust & Moonlight'},
+    {t:'role',r:'Graph',v:'Ups & Downs in Love'},
+    {t:'divider'},
+    {t:'role',r:'Best Supporting Role',v:'Our First Adventures'},
+    {t:'role',r:'Special Thanks',v:'Every laugh, every hug'},
+    {t:'divider'},
+    {t:'quote',v:'"And so the adventure begins..."'},
+    {t:'divider'},
+    {t:'small',v:`© ${new Date().getFullYear()} — Our Love Story`},
+    {t:'small',v:'Made with ❤️ for you'},
+  ];
+  return <section style={{position:'relative',overflow:'hidden',
+    background:'#030002',padding:'0',minHeight:'80svh',
+    display:'flex',flexDirection:'column',alignItems:'center'}}>
+    <Stars n={55}/>
+    {/* Film strip top */}
+    <div style={{width:'100%',height:28,
+      background:'repeating-linear-gradient(90deg,#111 0px,#111 18px,#060104 18px,#060104 26px)',
+      opacity:.6,borderBottom:'1px solid rgba(201,168,76,.12)'}}/>
+    <div style={{overflow:'hidden',position:'relative',width:'100%',
+      maxHeight:'70svh',display:'flex',justifyContent:'center'}}>
+      <div style={{width:'100%',maxWidth:380,padding:'50px 32px 80px',
+        animation:'creditsScroll 28s linear forwards',animationDelay:'1s'}}>
+        {lines.map((l,i)=><div key={i} style={{
+          textAlign:'center',
+          marginBottom:l.t==='divider'?30:l.t==='section'?6:12,
+          ...(l.t==='section'&&{fontFamily:'"Great Vibes",cursive',fontSize:38,color:'rgba(201,168,76,.88)',marginBottom:4}),
+          ...(l.t==='sub'&&{fontFamily:'"Cormorant Garamond",serif',fontStyle:'italic',fontSize:15,color:'rgba(232,160,180,.55)',letterSpacing:1,marginBottom:22}),
+          ...(l.t==='divider'&&{width:60,height:1,background:'rgba(201,168,76,.2)',margin:'22px auto'}),
+          ...(l.t==='role'&&{}),
+          ...(l.t==='quote'&&{fontFamily:'"Playfair Display",serif',fontStyle:'italic',fontSize:18,color:'rgba(255,255,255,.72)',lineHeight:1.7,margin:'8px 0 24px'}),
+          ...(l.t==='small'&&{fontFamily:'"Cormorant Garamond",serif',fontSize:13,color:'rgba(201,168,76,.3)',letterSpacing:2}),
+        }}>
+          {l.t==='role'&&<>
+            <div style={{fontSize:11,letterSpacing:3,textTransform:'uppercase',
+              color:'rgba(201,168,76,.45)',marginBottom:3}}>{l.r}</div>
+            <div style={{fontFamily:'"Playfair Display",serif',fontSize:17,
+              color:'rgba(255,255,255,.78)'}}>{l.v}</div>
+          </>}
+          {l.t!=='role'&&l.v}
+        </div>)}
+      </div>
+    </div>
+    {/* Film strip bottom */}
+    <div style={{width:'100%',height:28,
+      background:'repeating-linear-gradient(90deg,#111 0px,#111 18px,#060104 18px,#060104 26px)',
+      opacity:.6,borderTop:'1px solid rgba(201,168,76,.12)'}}/>
+  </section>;
+}
+
+/* ══════════════════════════════════════════════════════
+   MUSIC BUTTON
+══════════════════════════════════════════════════════ */
+function MusicBtn({on,toggle}){
+  return <button onClick={toggle} style={{
+    position:'fixed',bottom:22,right:18,
+    width:52,height:52,borderRadius:'50%',
+    border:`1px solid rgba(201,168,76,${on?.58:.28})`,
+    background:on
+      ?'linear-gradient(135deg,rgba(150,22,60,.95),rgba(100,10,42,.97))'
+      :'rgba(8,2,6,.9)',
+    backdropFilter:'blur(18px)',
+    display:'flex',alignItems:'center',justifyContent:'center',
+    cursor:'pointer',fontSize:20,zIndex:100,
+    boxShadow:on?'0 0 32px rgba(201,168,76,.55)':'0 4px 18px rgba(0,0,0,.65)',
+    transition:'all .38s cubic-bezier(.23,1,.32,1)',
+    animation:on?'glowRing 2.4s ease-in-out infinite':'none'}}>
+    {on?'🎵':'🔇'}
+  </button>;
+}
+
+/* ══════════════════════════════════════════════════════
+   SHARE BUTTON
+══════════════════════════════════════════════════════ */
+function ShareBtn({name,showToast}){
+  const share=async()=>{
+    const msg=`Happy 1st Anniversary, ${name}! 💕\n\nI made this just for you — a little piece of my heart wrapped in stars and music 🌟❤️`;
+    try{
+      if(navigator.share){await navigator.share({title:'Happy Anniversary 💕',text:msg})}
+      else{await navigator.clipboard.writeText(msg);showToast('Message copied! 💕')}
+    }catch(e){showToast('Share with love ❤️')}
+  };
+  return <button onClick={share} style={{
+    position:'fixed',bottom:22,left:18,
+    width:52,height:52,borderRadius:'50%',
+    border:'1px solid rgba(201,168,76,.28)',
+    background:'rgba(8,2,6,.9)',
+    backdropFilter:'blur(18px)',
+    display:'flex',alignItems:'center',justifyContent:'center',
+    cursor:'pointer',fontSize:20,zIndex:100,
+    boxShadow:'0 4px 18px rgba(0,0,0,.65)',
+    transition:'all .38s ease'}}>
+    🔗
+  </button>;
+}
+
+/* ══════════════════════════════════════════════════════
+   APP ROOT
+══════════════════════════════════════════════════════ */
+function App(){
+  const [ready,setReady]=useState(false);
+  const [name,setName]=useState('My Love');
+  const [startDate,setStartDate]=useState(new Date(new Date().setFullYear(new Date().getFullYear()-1)));
+  const [sy,setSy]=useState(0);
+  const [music,setMusic]=useState(false);
+  const [toast,setToast]=useState({msg:'',visible:false});
+  const ctxRef=useRef(null),gainRef=useRef(null),schedRef=useRef(null),
+        niRef=useRef(0),ntRef=useRef(0);
+
+  const showToast=useCallback((msg)=>{
+    setToast({msg,visible:true});
+    setTimeout(()=>setToast(p=>({...p,visible:false})),2800);
+  },[]);
+
+  const onSplashDone=useCallback((n,d)=>{
+    setName(n);setStartDate(d);
+    setTimeout(()=>setReady(true),850);
+  },[]);
+
+  useEffect(()=>{
+    if(!ready)return;
+    const fn=()=>setSy(window.scrollY);
+    window.addEventListener('scroll',fn,{passive:true});
+    return()=>window.removeEventListener('scroll',fn);
+  },[ready]);
+
+  useEffect(()=>{
+    if(!ready)return;
+    const els=document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-z');
+    const obs=new IntersectionObserver(
+      es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),
+      {threshold:.1,rootMargin:'0px 0px -35px 0px'}
+    );
+    els.forEach(el=>obs.observe(el));return()=>obs.disconnect();
+  },[ready]);
+
+  const sched=useCallback(()=>{
+    if(!ctxRef.current||!gainRef.current)return;
+    const ctx=ctxRef.current;
+    while(ntRef.current<ctx.currentTime+.28){
+      const[freq,dur,vol]=SEQ[niRef.current%SEQ.length];
+      playNote(ctx,gainRef.current,freq,ntRef.current,dur,vol);
+      if(niRef.current%8===0){
+        const ch=CHORDS[(Math.floor(niRef.current/8))%CHORDS.length];
+        ch.forEach(f=>playNote(ctx,gainRef.current,f,ntRef.current,.78,.038));
+      }
+      ntRef.current+=dur;niRef.current++;
+    }
+  },[]);
+
+  const toggleMusic=useCallback(()=>{
+    if(music){
+      clearInterval(schedRef.current);
+      if(gainRef.current&&ctxRef.current){
+        gainRef.current.gain.linearRampToValueAtTime(0,ctxRef.current.currentTime+1.5);
+        setTimeout(()=>{ctxRef.current?.close();ctxRef.current=null;gainRef.current=null},1800);
+      }
+      setMusic(false);
+    } else {
+      const ctx=new(window.AudioContext||window.webkitAudioContext)();
+      const master=ctx.createGain(),dly=ctx.createDelay(.72),dg=ctx.createGain();
+      dg.gain.value=.18;
+      master.connect(ctx.destination);master.connect(dly);dly.connect(dg);dg.connect(ctx.destination);
+      master.gain.setValueAtTime(0,ctx.currentTime);
+      master.gain.linearRampToValueAtTime(1,ctx.currentTime+2.8);
+      ctxRef.current=ctx;gainRef.current=master;
+      ntRef.current=ctx.currentTime+.12;niRef.current=0;
+      schedRef.current=setInterval(sched,95);sched();
+      setMusic(true);
+    }
+  },[music,sched]);
+
+  if(!ready)return <Splash onDone={onSplashDone}/>;
+
+  return <div style={{animation:'appReveal .7s ease both'}}>
+    <Particles/>
+    <Petals n={14}/>
+    <MusicBtn on={music} toggle={toggleMusic}/>
+    <ShareBtn name={name} showToast={showToast}/>
+    {toast.visible&&<Toast msg={toast.msg} visible={toast.visible}/>}
+    <Hero sy={sy} name={name} startDate={startDate}/>
+    <QuoteRibbon/>
+    <PhotoGallery/>
+    <QuoteRibbon/>
+    <VideoFrame/>
+    <LoveLetter name={name}/>
+    <Timeline/>
+    <Finale name={name} onConfetti={()=>launchConfetti(5200)}/>
+    <Credits name={name}/>
+  </div>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
